@@ -14,6 +14,8 @@ class Cliente(models.Model):
 		return self.nome_completo
 	nome_completo = property(completa_nome)
 
+	
+
 class Oservico(models.Model):
 	numero_os = models.AutoField(primary_key=True)
 	cliente = models.ForeignKey(Cliente)

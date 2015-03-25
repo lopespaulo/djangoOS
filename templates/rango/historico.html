@@ -20,6 +20,8 @@
         	</tr>
     	</thead>
     	<tbody>
+
+       
             {% for servico in context %}
     			<tr id="tr_id_1" class="tr-class-1">
     				<td>{{ servico.numero_os }}</td>
@@ -30,7 +32,9 @@
                         <div class="btn-group" role="group" >
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-wrench"></span></button>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Editar</a></li>
+                            
+
+                            <li><a href="{% url 'rango:editar_servico' %}{{servico.numero_os}}">Editar</a></li>
                             <li><a href="#">Concluir</span></a></li>
                         </ul>  </div> </td>                 
 

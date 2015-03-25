@@ -11,7 +11,8 @@ urlpatterns = patterns('',
     url(r'^$', views.index, name='home'),
     url(r'^add_cliente/$', views.add_cliente, name='add_cliente'), # NEW MAPPING!
     url(r'^add_servico/$', views.add_servico, name='add_servico'), # NEW MAPPING!
+    url(r'^editar_servico/$', views.editar_servico, name='editar_servico'),
+    url(r'^editar_servico/(?P<numero_os>\d+)/$', views.editar_servico, name='editar_servico'),
     url(r'^historico/$', views.historico, name='historico'),
     url(r'^add_servico/busca_cliente/$', views.busca_cliente, name='search')
-
-    )
+)

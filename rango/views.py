@@ -1,5 +1,5 @@
 from django.shortcuts import render, render_to_response
-from rango.forms import ClienteForm, ServicoForm
+from rango.forms import ClienteForm, ServicoForm, EditServicoForm
 from rango.models import Oservico, Cliente
 from django.core.context_processors import csrf
 
@@ -27,6 +27,8 @@ def add_cliente(request):
 	return render(request, 'rango/add_cliente.html', context)
 
 
+# -- Tela de OS
+
 def busca_cliente(request):
 	if request.method == 'POST':
 		search = request.POST['search_text']
@@ -51,27 +53,20 @@ def add_servico(request):
 	context['form'] = form
 	return render(request, 'rango/add_servico.html', context)
 
-	#if request.method == 'POST':
-	#	search = request.POST['search_text']
-	#else:
-	#	search = ''
-	#clientes = Cliente.objects.filter(primeiro_nome__contains=search)
-	#return render_to_response('rango/add_servico.html', {'clientes': clientes})
-	# context = {}
-	# if request.method == 'POST':
-	# 	form = MyForm(request.POST)
-	# 	if form.is_valid():
-	# 		context['is_valid'] = True
-	# 		form.save()
-	# 		form = MyForm()
-					
-	# 	else:
-	# 		print (form.errors)
-	# else:
-	# 	form = MyForm()
-	# context['form'] = form
-	#return render(request, 'rango/add_servico.html', context)	
+#Edit Form
 
+def editar_servico(request):
+	context = {}
+	if request.method == 'GET':
+		form = EditServicoForm(request.GET, instance=numero_os)
+		if form.is_valid():
+			form.save()
+			form = EditServicoForm(instance=numero_os)
+			context['success'] = True
+	else:
+		form = EditServicoForm(instance=numero_os)
+	context['form'] = form
+	return direct_to_template(request, 'rango/editar_servico.html', {'form': form} )
 
 def historico(request):
 	
