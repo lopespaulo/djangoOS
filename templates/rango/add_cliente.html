@@ -1,0 +1,40 @@
+{% extends 'rango/base.html' %}
+{% load bootstrap %}
+    {% block content %}
+    <fieldset>
+     <form method="post" action="#cliente" >
+        <h1>Add Cliente</h1>
+        {% if is_valid %}
+        <div class="alert alert-success" role="alert"> <p> Cliente adicionado com sucesso. </p></div>
+        {% endif %}
+
+            {% csrf_token %}
+        <div >
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+             
+            {% for field in form %}
+            <div>  
+                {{ field.label_tag }}
+                <ul>{{ field }}
+                {{ field.errors }}</ul>
+            </div> 
+            {% endfor %}
+              
+           
+            
+            
+        <br />
+            <input class="btn btn-success" type="submit" name="submit" value="Gravar" />
+            <input class="btn btn-danger" type="submit" name="submit" value="Apagar" />
+        
+        </div>
+    </form>
+    </fieldset>
+   
+   
+    {% endblock %}
+
+  
+
