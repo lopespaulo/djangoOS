@@ -2,49 +2,37 @@
 {% load bootstrap %}
     {% block content %}
     <fieldset>
-     <form method="post" action="#cliente" >
+    <form method="post" action="#cliente" >
         <h1>Add Serviço</h1>
 
         {% if is_valid %}
         <div class="alert alert-success" role="alert"> <p> Serviço adicionado com sucesso. </p></div>
         {% endif %}
 
-        <h3> Procurar Cliente </h3>
+            <h3> Procurar Cliente </h3>
             {% csrf_token %}
             <input type='text' id='search' name='search' />
             <ul id='search-results' >
     
             </ul>
-
-            
+          
             {% for hidden in form.hidden_fields %}
                 {{ hidden }}
             {% endfor %}
-<<<<<<< HEAD
+
             <div>
+ 
             {% for field in form %}
             
-                <Ul>{{ field.label_tag }}
-                {{ field }}
-                {{ field.errors }}</ul>
-           
-            {% endfor %}
-            </div> 
-=======
-             
-            {% for field in form %}
-            <div>  
+                <Ul>
                 {{ field.label_tag }}
-                <ul>{{ field }}
-                {{ field.errors }}</ul>
-            </div> 
-            {% endfor %}
-              
->>>>>>> origin/master
+                {{ field }}
+                {{ field.errors }}
+                </ul>
            
-            
-            
-        <br />
+            {% endfor %}
+            </div> 
+            <br />
             <input class="btn btn-success" type="submit" name="submit" value="Gravar" />
             <input class="btn btn-danger" type="submit" name="submit" value="Apagar" />
         

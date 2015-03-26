@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 from django.shortcuts import render, render_to_response, redirect, get_object_or_404
-=======
-from django.shortcuts import render, render_to_response
->>>>>>> origin/master
 from rango.forms import ClienteForm, ServicoForm, EditServicoForm
 from rango.models import Oservico, Cliente
 from django.core.context_processors import csrf
@@ -59,7 +55,6 @@ def add_servico(request):
 
 #Edit Form
 
-<<<<<<< HEAD
 def editar_servico(request, id):
 	servico = get_object_or_404(Oservico, pk=id)
 	form = EditServicoForm(request.POST or None, instance=servico)
@@ -67,20 +62,6 @@ def editar_servico(request, id):
 		form.save()
 		return redirect('rango:historico')			
 	return render(request, 'rango/editar_servico.html', {'form': form} )
-=======
-def editar_servico(request):
-	context = {}
-	if request.method == 'GET':
-		form = EditServicoForm(request.GET, instance=numero_os)
-		if form.is_valid():
-			form.save()
-			form = EditServicoForm(instance=numero_os)
-			context['success'] = True
-	else:
-		form = EditServicoForm(instance=numero_os)
-	context['form'] = form
-	return direct_to_template(request, 'rango/editar_servico.html', {'form': form} )
->>>>>>> origin/master
 
 def historico(request):
 	

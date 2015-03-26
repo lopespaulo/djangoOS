@@ -25,19 +25,11 @@ class ClienteForm(forms.ModelForm):
 class ServicoForm(forms.ModelForm):
 	class Meta:
 		model = Oservico
-<<<<<<< HEAD
 		fields = ['id','data_abertura', 'equipamento', 'defeito',]
 
 class EditServicoForm(forms.ModelForm):
 	def clean_ServicoForm(self):
 		numero_os = self.cleaned_data['id']
-=======
-		fields = ['numero_os','data_abertura', 'equipamento', 'defeito',]
-
-class EditServicoForm(forms.ModelForm):
-	def clean_ServicoForm(self):
-		numero_os = self.cleaned_data['numero_os']
->>>>>>> origin/master
 		return numero_os
 		
 	class Meta:
