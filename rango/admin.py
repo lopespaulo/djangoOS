@@ -10,13 +10,7 @@ class OservicoAdmin(admin.ModelAdmin):
 
 class ClienteAdmin(admin.ModelAdmin):
     list_display = ('nome_completo', 'telefone')
-=======
-	list_display = ('numero_os', 'data_abertura', 'cliente', 'situacao')
-	order_by = ('-data_abertura')
-	list_filter = ('data_abertura', 'situacao', 'cliente')
 
-class ClienteAdmin(admin.ModelAdmin):
-	list_display = ('nome_completo', 'telefone')
 >>>>>>> origin/master
 
 
