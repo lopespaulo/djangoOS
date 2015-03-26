@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.core.urlresolvers import reverse
 
 
 class Cliente(models.Model):
@@ -17,21 +18,24 @@ class Cliente(models.Model):
 	
 
 class Oservico(models.Model):
-	numero_os = models.AutoField(primary_key=True)
 	cliente = models.ForeignKey(Cliente)
 	data_abertura = models.DateTimeField(default=timezone.now)
 	equipamento = models.TextField(blank= True)
 	defeito = models.TextField(blank= True)
 	CHOICES = (('A', 'Aberta',), ('F', 'Fechada',), ('C', 'Cancelada', ))
 	situacao = models.CharField(max_length=1, choices=CHOICES, default = 'A')
+	solucao = models.TextField(blank= True)
+	data_fechamento = models.DateTimeField()  ## TODO ##
 
 	class Meta:
 		verbose_name='Ordem de Serviço'
 		verbose_name_plural='Ordens de Serviço'
 
 	def __str__(self):
-		return str(self.numero_os)
+		return str(self.pk)
 
 	def abrir(self):
 		self.save()
-		
+
+	#def get_absolute_url(self):
+		#return reverse('rango:editar_historico', kwargs={'pk': self.pk})

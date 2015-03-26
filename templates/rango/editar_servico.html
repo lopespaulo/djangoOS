@@ -2,7 +2,7 @@
 {% extends 'rango/base.html' %}
 {% block content %}
 
-<form method="GET">
+<form method="POST">
     {% csrf_token %}
     {% if success %}
     <p>Os dados foram alterados com sucesso</p>
@@ -10,10 +10,14 @@
     <fieldset>
         {{ form.non_field_errors }}
         {% for field in form %}
-        <div >
-            {{ field.label_tag }}
-            {{ field }}
-            {{ field.errors }}
+        <div>
+            {% if field = field.data_fechamento %}
+                {{field | date:'d/m/Y' }}
+            {% else %}
+                {{ field.label_tag }}
+                {{ field }}
+                {{ field.errors }}
+            {% endif %}
         </div>
         {% endfor %}
         <div class="pure-controls">

@@ -20,15 +20,15 @@
             {% for hidden in form.hidden_fields %}
                 {{ hidden }}
             {% endfor %}
-             
+            <div>
             {% for field in form %}
-            <div>  
-                {{ field.label_tag }}
-                <ul>{{ field }}
+            
+                <Ul>{{ field.label_tag }}
+                {{ field }}
                 {{ field.errors }}</ul>
-            </div> 
+           
             {% endfor %}
-              
+            </div> 
            
             
             
