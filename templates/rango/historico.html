@@ -11,11 +11,18 @@
 
         <thead>
         	 <tr>
+<<<<<<< HEAD
           		<th data-field="id">Numero OS</th>
            		<th data-field="data_abertura">Data Abertura</th>
            		<th data-field="nome">Nome Cliente</th>
                 <th data-field="situacao">Situação</th>
                 <th data-field="data_fechamento">Fechamento</th>
+=======
+          		<th data-field="numero_os">Numero OS</th>
+           		<th data-field="data_abertura">Data Abertura</th>
+           		<th data-field="nome">Nome Cliente</th>
+                <th data-field="situacao">Situação</th>
+>>>>>>> origin/master
                 <th data-field="opcao">Opções</th>
 
         	</tr>
@@ -25,21 +32,36 @@
        
             {% for servico in context %}
     			<tr id="tr_id_1" class="tr-class-1">
+<<<<<<< HEAD
     				<td>{{ servico.id }}</td>
     				<td>{{ servico.data_abertura | date:'d/m/Y' }}</td>
     				<td>{{ servico.cliente }}</td>
                     <td>{{ servico.situacao }}</td>
                     <td>{{ servico.data_fechamento | date:'d/m/Y' }}</td>                
+=======
+    				<td>{{ servico.numero_os }}</td>
+    				<td>{{ servico.data_abertura | date:'d/m/Y' }}</td>
+    				<td>{{ servico.cliente }}</td>
+                    <td>{{ servico.situacao }}</td>
+>>>>>>> origin/master
                     <td>
                         <div class="btn-group" role="group" >
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-wrench"></span></button>
                         <ul class="dropdown-menu" role="menu">
+<<<<<<< HEAD
                             <li><a href="{% url 'rango:editar_servico' servico.id %}">Editar</a></li>
                             <li><a href="#">Concluir</span></a></li>
                         </ul>
                         </div>
                     </td>
 
+=======
+                            
+
+                            <li><a href="{% url 'rango:editar_servico' %}{{servico.numero_os}}">Editar</a></li>
+                            <li><a href="#">Concluir</span></a></li>
+                        </ul>  </div> </td>                 
+>>>>>>> origin/master
 
     			</tr>
     		{% endfor %}

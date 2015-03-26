@@ -20,6 +20,7 @@
             {% for hidden in form.hidden_fields %}
                 {{ hidden }}
             {% endfor %}
+<<<<<<< HEAD
             <div>
             {% for field in form %}
             
@@ -29,6 +30,17 @@
            
             {% endfor %}
             </div> 
+=======
+             
+            {% for field in form %}
+            <div>  
+                {{ field.label_tag }}
+                <ul>{{ field }}
+                {{ field.errors }}</ul>
+            </div> 
+            {% endfor %}
+              
+>>>>>>> origin/master
            
             
             

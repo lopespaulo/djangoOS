@@ -14,11 +14,19 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Cliente',
             fields=[
+<<<<<<< HEAD
                 ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
                 ('primeiro_nome', models.CharField(max_length=60, verbose_name='primeiro nome')),
                 ('ultimo_nome', models.CharField(max_length=60, verbose_name='ultimo nome', null=True, blank=True)),
                 ('telefone', models.CharField(max_length=15, verbose_name='telefone', null=True, blank=True)),
                 ('email', models.EmailField(max_length=75, verbose_name='email', null=True, blank=True)),
+=======
+                ('id', models.AutoField(serialize=False, auto_created=True, verbose_name='ID', primary_key=True)),
+                ('primeiro_nome', models.CharField(max_length=60)),
+                ('ultimo_nome', models.CharField(max_length=60, blank=True, null=True)),
+                ('telefone', models.CharField(max_length=15, blank=True, null=True)),
+                ('email', models.EmailField(max_length=75, blank=True, null=True)),
+>>>>>>> origin/master
             ],
             options={
             },
@@ -27,11 +35,19 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Oservico',
             fields=[
+<<<<<<< HEAD
                 ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
                 ('data_abertura', models.DateTimeField(default=django.utils.timezone.now)),
                 ('equipamento', models.TextField(blank=True)),
                 ('defeito', models.TextField(blank=True)),
                 ('situacao', models.CharField(max_length=1, default='A', choices=[('A', 'Aberta'), ('F', 'Fechada'), ('C', 'Cancelada')])),
+=======
+                ('numero_os', models.AutoField(serialize=False, primary_key=True)),
+                ('data_abertura', models.DateTimeField(default=django.utils.timezone.now)),
+                ('equipamento', models.TextField(blank=True)),
+                ('defeito', models.TextField(blank=True)),
+                ('situacao', models.CharField(max_length=1, choices=[('A', 'Aberta'), ('F', 'Fechada'), ('C', 'Cancelada')])),
+>>>>>>> origin/master
                 ('cliente', models.ForeignKey(to='rango.Cliente')),
             ],
             options={
