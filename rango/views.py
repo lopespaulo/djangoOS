@@ -26,6 +26,8 @@ def add_cliente(request):
 	context['form'] = form
 	return render(request, 'rango/add_cliente.html', context)
 
+	
+
 
 # -- Tela de OS
 

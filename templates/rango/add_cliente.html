@@ -1,38 +1,53 @@
 {% extends 'rango/base.html' %}
 {% load bootstrap %}
     {% block content %}
+<div class='col-sm-3' style="background-color:lavender;">
     <fieldset>
      <form method="post" action="#cliente" >
-        <h1>Add Cliente</h1>
+        <h3>Add Cliente</h3>
         {% if is_valid %}
-        <div class="alert alert-success" role="alert"> <p> Cliente adicionado com sucesso. </p></div>
+            <div class="alert alert-success" role="alert"> <p> Cliente adicionado com sucesso. </p></div>
         {% endif %}
-
-            {% csrf_token %}
+        {% csrf_token %}
         <div >
+            
             {% for hidden in form.hidden_fields %}
                 {{ hidden }}
             {% endfor %}
              
             {% for field in form %}
-            <div>  
+            <div class='input-group input-group-lg'>  
                 {{ field.label_tag }}
                 <ul>{{ field }}
                 {{ field.errors }}</ul>
             </div> 
             {% endfor %}
-              
-           
             
-            
-        <br />
+            <br />
             <input class="btn btn-success" type="submit" name="submit" value="Gravar" />
             <input class="btn btn-danger" type="submit" name="submit" value="Apagar" />
         
         </div>
     </form>
     </fieldset>
-   
+</div>
+<div class='col-sm-9'>
+<label for="tipo_busca">Buscar por:</label>
+    <form class="form-inline">
+        <div class="form-group">
+            
+            <select class="form-control" id='tipo_busca'>
+                <option>Primeiro Nome</option>
+                <option>Email</option>
+                <option>Telefone</option>
+                <option>Todos</option>
+            </select>
+            <input type='text' class='form-control' id='search' name='search' />
+            <input class="btn btn-info" type="submit" name="submit" value="Procurar" />
+        </div>
+    </form>
+</div>
+
    
     {% endblock %}
 

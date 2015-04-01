@@ -8,19 +8,19 @@
         {% if is_valid %}
         <div class="alert alert-success" role="alert"> <p> Serviço adicionado com sucesso. </p></div>
         {% endif %}
-
-            <h3> Procurar Cliente </h3>
-            {% csrf_token %}
-            <input type='text' id='search' name='search' />
-            <ul id='search-results' >
-    
-            </ul>
-          
+            
             {% for hidden in form.hidden_fields %}
                 {{ hidden }}
             {% endfor %}
 
             <div>
+            
+            <h3> Cliente </h3>
+            {% csrf_token %}
+            <input type='text' id='search' name='search' />
+            <ul id='search-results' >
+    
+            </ul>
  
             {% for field in form %}
             

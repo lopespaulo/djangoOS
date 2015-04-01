@@ -23,6 +23,7 @@ class ClienteForm(forms.ModelForm):
 #	busca = forms.CharField()
 
 class ServicoForm(forms.ModelForm):
+	data_abertura = forms.DateField(widget=forms.widgets.DateInput(format="%d/%m/%Y"))
 	class Meta:
 		model = Oservico
 		fields = ['id','data_abertura', 'equipamento', 'defeito',]
@@ -34,17 +35,7 @@ class EditServicoForm(forms.ModelForm):
 		
 	class Meta:
 		model = Oservico
-<<<<<<< HEAD
 		fields = ['id', 'cliente', 'situacao', 'solucao','data_fechamento' ]
-=======
-		fields = ['numero_os', 'cliente', 'situacao', ]
->>>>>>> origin/master
-	
-
-
-	
-
-
 
 def busca_usuarios():
 	MY_CHOICES = (('1', 'Option 1'),('2', 'Option 2'),('3', 'Option 3'),)

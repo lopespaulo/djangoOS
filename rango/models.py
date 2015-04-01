@@ -24,7 +24,7 @@ class Oservico(models.Model):
 	CHOICES = (('A', 'Aberta',), ('F', 'Fechada',), ('C', 'Cancelada', ))
 	situacao = models.CharField(max_length=1, choices=CHOICES, default = 'A')
 	solucao = models.TextField(blank= True)
-	data_fechamento = models.DateTimeField()  ## TODO ##
+	data_fechamento = models.DateTimeField(blank=True, null=True)  ## TODO ##
 
 
 	class Meta:

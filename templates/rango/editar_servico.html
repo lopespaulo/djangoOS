@@ -12,7 +12,7 @@
         {{ form.non_field_errors }}
         {% for field in form %}
         <div>
-            {% if field = field.data_fechamento %}
+            {% if field == field.data_fechamento %}
                 {{field | date:'d/m/Y' }}
             {% else %}
                 {{ field.label_tag }}

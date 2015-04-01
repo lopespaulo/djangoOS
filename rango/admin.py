@@ -4,7 +4,7 @@ from rango.models import Cliente, Oservico
 
 class OservicoAdmin(admin.ModelAdmin):
 
-    list_display = ( 'id', 'data_abertura', 'cliente', 'situacao')
+    list_display = ( 'id', 'data_abertura', 'cliente', 'situacao','data_fechamento')
     order_by = ('-data_abertura')
     list_filter = ('data_abertura', 'situacao', 'cliente')
 
