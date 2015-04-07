@@ -1,40 +1,46 @@
 {% extends 'rango/base.html' %}
 {% load bootstrap %}
     {% block content %}
-<div class='col-sm-3' style="background-color:lavender;">
+<div class='col-sm-3' >
     <fieldset>
-     <form method="post" action="#cliente" >
-        <h3>Add Cliente</h3>
-        {% if is_valid %}
-            <div class="alert alert-success" role="alert"> <p> Cliente adicionado com sucesso. </p></div>
-        {% endif %}
-        {% csrf_token %}
-        <div >
+       
+            <a class="btn btn-primary" data-toggle="collapse" href="#adicionarcliente" aria-expanded="false" aria-controls="adicionarcliente">
+                Adicionar Cliente
+            </a>
+                <div class="collapse" id="adicionarcliente">
+                    <div class="well">
+                         <form method="post" action="#cliente" >        
+                            {% if is_valid %}
+                            <div class="alert alert-success" role="alert"> <p> Cliente adicionado com sucesso. </p></div>
+                            {% endif %}
+                            {% csrf_token %}
+                            <div >
+                                {% for hidden in form.hidden_fields %}
+                                    {{ hidden }}
+                                {% endfor %}
+                                {% for field in form %}
+                                    <div class='input-group input-group-lg'>  
+                                    {{ field.label_tag }}
+                                    <ul>{{ field }}
+                                    {{ field.errors }}</ul>
+                                    </div> 
+                                {% endfor %}
             
-            {% for hidden in form.hidden_fields %}
-                {{ hidden }}
-            {% endfor %}
-             
-            {% for field in form %}
-            <div class='input-group input-group-lg'>  
-                {{ field.label_tag }}
-                <ul>{{ field }}
-                {{ field.errors }}</ul>
-            </div> 
-            {% endfor %}
-            
-            <br />
-            <input class="btn btn-success" type="submit" name="submit" value="Gravar" />
-            <input class="btn btn-danger" type="submit" name="submit" value="Apagar" />
-        
-        </div>
-    </form>
+                                <br />
+                                <input class="btn btn-success" type="submit" name="submit" value="Gravar" />
+                                <input class="btn btn-danger" type="submit" name="submit" value="Apagar" />
+                            </div>
+                            </form>
+                    </div>
+                </div>    
     </fieldset>
 </div>
 <div class='col-sm-9'>
+<fieldset>
 <label for="tipo_busca">Buscar por:</label>
-    <form class="form-inline">
+    <form class="form-inline" method='POST'>
         <div class="form-group">
+            {% csrf_token %}
             
             <select class="form-control" id='tipo_busca'>
                 <option>Primeiro Nome</option>
@@ -42,10 +48,14 @@
                 <option>Telefone</option>
                 <option>Todos</option>
             </select>
-            <input type='text' class='form-control' id='search' name='search' />
-            <input class="btn btn-info" type="submit" name="submit" value="Procurar" />
+            <input type='text' class='form-control' id='cliente_nome' name='cliente_nome' />
+            <input class="btn btn-info" type="submit" id ='buscar_cliente' name="buscar_cliente" value="Procurar" />
         </div>
-    </form>
+        </form>
+</fieldset>
+    <ul id='search-results' >
+    
+            </ul>
 </div>
 
    
