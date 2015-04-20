@@ -1,7 +1,29 @@
+<br />
+<table class="table table-bordered table-hover table-condensed ">
 {% if clientes.count > 0 %}
 
+<thead>
+	<tr>
+		<th data-field="id"><spam class= "glyphicon glyphicon-user"></spam> Cliente</th>
+		<th data-field="telefone"><spam class= "glyphicon glyphicon-phone-alt"></spam> Telefone</th>
+		<th data-field="opcao"><spam class="glyphicon glyphicon-cog"></spam> Opções</th>
+	</tr>
+</thead>
+<tbody>
 	{% for cliente in clientes %}
-		<li> {{ cliente }} </li>
-	{% endfor %} 
+	<tr>
+		<td>{{ cliente }}</td>
+		<td>{{ cliente.telefone }}</td>
 
+		<td>
+			<button type="button" class="btn btn-default btn-sm" aria-label="Left Align">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+			</button>
+		</td>
+	</tr>
+	{% endfor %}
+   
+</tbody>
+</table>
+	
 {% endif %}

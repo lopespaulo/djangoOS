@@ -4,12 +4,12 @@
 <div class='col-sm-3' >
     <fieldset>
        
-            <a class="btn btn-primary" data-toggle="collapse" href="#adicionarcliente" aria-expanded="false" aria-controls="adicionarcliente">
+            <a class="btn btn-info" data-toggle="collapse" href="#adicionarcliente" aria-expanded="false" aria-controls="adicionarcliente">
                 Adicionar Cliente
             </a>
                 <div class="collapse" id="adicionarcliente">
                     <div class="well">
-                         <form method="post" action="#cliente" >        
+                         <form method="post" action="#cliente javascript:void(0)" >        
                             {% if is_valid %}
                             <div class="alert alert-success" role="alert"> <p> Cliente adicionado com sucesso. </p></div>
                             {% endif %}
@@ -36,10 +36,11 @@
     </fieldset>
 </div>
 <div class='col-sm-9'>
-<fieldset>
-<label for="tipo_busca">Buscar por:</label>
-    <form class="form-inline" method='POST'>
+
+
+    <form class="form-inline" method='POST' action="javascript:void(0)">
         <div class="form-group">
+        <label for="tipo_busca">Buscar por:</label>
             {% csrf_token %}
             
             <select class="form-control" id='tipo_busca'>
@@ -51,11 +52,12 @@
             <input type='text' class='form-control' id='cliente_nome' name='cliente_nome' />
             <input class="btn btn-info" type="submit" id ='buscar_cliente' name="buscar_cliente" value="Procurar" />
         </div>
-        </form>
-</fieldset>
-    <ul id='search-results' >
+    </form>
     
-            </ul>
+    <div id='search-results'>
+
+    </div>
+     
 </div>
 
    

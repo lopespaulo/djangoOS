@@ -8,21 +8,20 @@ $(function(){
 				'search_text' : $('#search').val(),
 				'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val()
 			},
-			success: searchSuccess,
+			success: function(data, textStatus, jqXHR)
+				{
+					$('#search-results').html(data);
+				},
 			dataType: 'html'
 		});
 	});
 
 });
 
-function searchSuccess(data, textStatus, jqXHR)
-{
-	$('#search-results').html(data);
-}
 
 
 $(function(){
-	$('#buscar_cliente').onclick(function(){
+	$('#buscar_cliente').click(function(){
 		$.ajax({
 			//dataType: 'json',
 			type: "POST",
