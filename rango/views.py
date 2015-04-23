@@ -36,13 +36,21 @@ def busca_cliente(request):
 	clientes = Cliente.objects.filter(primeiro_nome__contains=search).exclude(primeiro_nome__contains=' ')
 	return render_to_response('rango/ajax_search.html', {'clientes': clientes})	
 
-def add_servico(request, id):
-	servico = get_object_or_404(Oservico, pk=id)
-	form = ServicoForm(request.POST or None, instance=servico)
-	if form.is_valid():
-		form.save()
-		return redirect('rango:historico')			
-	return render(request, 'rango/add_os.html', {'form': form} )
+def add_servico(request):
+	#Oservico.objects.filter(cliente_id=id)
+	context = {}
+	if request.method == 'POST':
+		form = ServicoForm(request.POST)
+		if form.is_valid():
+			context['is_valid'] = True
+			form.save()
+			form = ServicoForm()
+		else:
+			print (form.errors)
+	else:
+		form = ServicoForm()
+	context['form'] = form
+	return render(request, 'rango/add_os.html', context )
 
 #Edit Form
 
